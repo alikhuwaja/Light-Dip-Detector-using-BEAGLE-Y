@@ -99,38 +99,36 @@ To manually run CMake from the command line use:
   cmake --build build
 ```
 
-  # --------
-  # On HOST:
-  # --------
+## On HOST:
+ 
 
-  # (Optional) remove old export
+  ## (Optional) remove old export
   sudo rm -rf -- /home/user/ensc351/public/as2
 
-  # recreate export folder
+  ## recreate export folder
   sudo mkdir -p /home/user/ensc351/public/as2
 
-  # copy project into exported path
+  ## copy project into exported path
   sudo cp -a /home/user/ensc351/work/as2/cmake_starter \
              /home/user/ensc351/public/as2/
 
-  # fix ownership
+  ## fix ownership
   sudo chown -R user:user /home/user/ensc351/public/as2/cmake_starter
 
 
-  # -----------
-  # On BEAGLE:
-  # -----------
+## On BEAGLE:
 
-  # mount NFS export
+
+  ## mount NFS export
   ./mountNFS.sh
 
-  # build
+  ## build
   cd /mnt/remote/as2/cmake_starter
   rm -rf build
   cmake -S . -B build
   cmake --build build -j
 
-  # run
+  ## run
   sudo ./build/light_sampler \
     /dev/spidev0.1 0 3.300 \
     --chip=gpiochip2 --a=7 --b=8 --edges=4 \
