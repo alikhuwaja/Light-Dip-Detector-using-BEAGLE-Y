@@ -101,6 +101,7 @@ To manually run CMake from the command line use:
 
 ## On HOST:
  
+ ```shell
 
   ## (Optional) remove old export
   sudo rm -rf -- /home/user/ensc351/public/as2
@@ -114,11 +115,11 @@ To manually run CMake from the command line use:
 
   ## fix ownership
   sudo chown -R user:user /home/user/ensc351/public/as2/cmake_starter
-
+ ```
 
 ## On BEAGLE:
 
-
+```shell
   ## mount NFS export
   ./mountNFS.sh
 
@@ -134,7 +135,7 @@ To manually run CMake from the command line use:
     --chip=gpiochip2 --a=7 --b=8 --edges=4 \
     --start-hz=10 --duty=50 --step=1 \
     --dip-trig=0.10 --dip-rel=0.07 --dip-width=2 --dip-gap=1
-
+ ```
 ## UDP Commands form Host
 
   nc -u 192.168.7.2 12345
