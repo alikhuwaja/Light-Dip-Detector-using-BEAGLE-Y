@@ -99,6 +99,52 @@ To manually run CMake from the command line use:
   cmake --build build
 ```
 
+  # --------
+  # On HOST:
+  # --------
+
+  # (Optional) remove old export
+  sudo rm -rf -- /home/user/ensc351/public/as2
+
+  # recreate export folder
+  sudo mkdir -p /home/user/ensc351/public/as2
+
+  # copy project into exported path
+  sudo cp -a /home/user/ensc351/work/as2/cmake_starter \
+             /home/user/ensc351/public/as2/
+
+  # fix ownership
+  sudo chown -R user:user /home/user/ensc351/public/as2/cmake_starter
+
+
+  # -----------
+  # On BEAGLE:
+  # -----------
+
+  # mount NFS export
+  ./mountNFS.sh
+
+  # build
+  cd /mnt/remote/as2/cmake_starter
+  rm -rf build
+  cmake -S . -B build
+  cmake --build build -j
+
+  # run
+  sudo ./build/light_sampler \
+    /dev/spidev0.1 0 3.300 \
+    --chip=gpiochip2 --a=7 --b=8 --edges=4 \
+    --start-hz=10 --duty=50 --step=1 \
+    --dip-trig=0.10 --dip-rel=0.07 --dip-width=2 --dip-gap=1
+
+## UDP Commands form Host
+
+  nc -u 192.168.7.2 12345
+
+## Run UDP GUI 
+  python3 /home/user/Downloads/as2UdpGui.py
+
+
 ## Finer Points
 
 - When using the header files in HAL, you'll need to:  
