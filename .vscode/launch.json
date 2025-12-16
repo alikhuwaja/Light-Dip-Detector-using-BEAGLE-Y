@@ -1,0 +1,30 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "noworky (gdbserver on BeagleY)",
+      "type": "cppdbg",
+      "request": "launch",
+
+      "program": "${workspaceFolder}/noworky",          // local copy (symbols)
+      "cwd": "${workspaceFolder}",
+
+      "MIMode": "gdb",
+      "miDebuggerPath": "/usr/bin/gdb-multiarch",        // safer than aarch64-linux-gnu-gdb
+      "miDebuggerServerAddress": "192.168.7.2:2345",
+      "stopAtEntry": true,
+      "externalConsole": false,
+
+      "setupCommands": [
+        { "text": "-gdb-set disassemble-next-line on" },
+        { "text": "-gdb-set pagination off" },
+        { "text": "set architecture aarch64" }
+      ],
+
+      // Maps Beagle path -> your host path so VS Code opens the right sources
+      "sourceFileMap": {
+        "/mnt/remote/as2/cmake_starter": "${workspaceFolder}"
+      }
+    }
+  ]
+}
